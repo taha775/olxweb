@@ -1,0 +1,87 @@
+redux
+
+content api
+
+redux , applymiddleware 
+
+store => action,reducer   are invloved
+
+
+store aur appiliccation ko kon mialyega so taht is applymiddleware
+toh market ma thunk is best 
+
+easy to use 
+data transer easily 
+beacause when we use that this automatically store that without specifying  of user
+
+backend
+
+frotent, api, backend
+
+
+softwar house >>> gbs bitprops 
+React Redux includes a <Provider /> component, which makes the Redux store available to the rest of your app:
+
+1> npm i react-redux
+2>npm i redux-thunk 
+3>install redux
+4> store > crwate >>> index.js >> react-store-apply middle ware  >> thunk >>>>     in this apply middle ware is helping provider 
+
+5> REducners >> store ka initjla  data ko istaaml kya 
+6> app.js ko connect karwanaha toh connect import karo then uska connect karo 
+
+
+
+
+for example to clear concept to action and reduncer 
+
+reducers =<conditiom<= state
+
+action.type> increment                  dispatach ma call karunga type 
+action.data
+
+
+store hamesha >  redux ka sath create hoga
+
+
+
+
+
+
+redux =>
+
+
+mapStateToProps=> store ki value ko lake ata ha 
+
+mapDispatchToProps =>  store ki value ko change karwata ha 
+
+
+leacure revised 
+
+redux>> statemangemet 
+store 
+
+signup>>
+login > 
+data store in state 
+
+home page pa use ko add
+user< add
+agetr add 
+we edit 
+we do all this ion state at vackenr 
+
+sbsa pahla store ma change karenge 
+
+fucntoion(a,b,...c){
+	class (12,2,3,4,,5,6,7,7,8,89,9,9)  
+
+
+}
+
+action>> two thinf
+1>type
+2> data 
+
+
+

@@ -1,0 +1,166 @@
+add :
+
+    const addTodo = () => {
+        console.log(user)
+        // set false
+        user["status"] = false
+        console.log(user)
+        props.Add_Todos(user)
+    }
+
+
+todos.jsx:
+
+  props.todos.map((v, i) => {
+                        return (
+                            <div>
+                                {v.status == true ?
+                                    <>
+                                        <input type="text" name="email" value={edituser.email} onChange={(e) => handleeditchange(e)} />
+                                        <input type="text" name="password" value={edituser.password} onChange={(e) => handleeditchange(e)} />
+                                        <button onClick={() => updateData(i)} >Update</button>
+                                    </>
+
+                                    :
+
+                                    <>
+                                        <b>email : {v.email} password :{v.password}</b>
+                                        <button onClick={() => deltedata(i)} >delete</button>
+                                        <button onClick={() => editTodo(i, v)} >Edit</button>
+
+
+                                    </>
+                                }
+
+                            </div>
+
+                        )
+             })
+
+
+edit function :
+
+ const editTodo = (index, value) => {
+        console.log(index)
+        //INDEX =>STATUS UPDATE
+
+        setedituser({
+            email: value.email,
+            password: value.password
+        })
+
+
+        props.update_Status(index)
+    }
+
+
+action :
+
+const updateStatus =(ind)=>{
+    return((dispatch)=>{
+        dispatch({
+            type:"update_status",
+            index:ind
+        })
+    })
+}
+
+
+
+
+
+
+reducer:
+
+
+
+ case "update_status":
+        console.log(action)
+        let tododata =[]; //ARRAY
+        // INDEX
+        // 2
+        // state.todos[I]["status"]=true
+        // true,TRUE,FALSE
+        //EDIT STATUS 
+        for(let i=0;i<state.todos.length;i++){
+          // console.log(state.todos[i])
+          if(action.index==i){
+            //CLICK
+            state.todos[i]["status"]=true//2
+            tododata.push(state.todos[i])
+
+          }
+          else{
+            state.todos[i]["status"]=false
+            tododata.push(  state.todos[i])//0,1,
+          }
+        }
+        console.log(tododata)
+        return {
+          ...state,
+          todos:tododata
+        }
+
+
+
+todo:
+
+mapdispatchtoprops:
+
+  update_Status: (ind) => dispatch(updateStatus(ind)),
+
+
+
+
+update function :
+
+
+  const updateData =(index)=>{
+        console.log(index)
+        console.log(edituser)
+        edituser["status"]=false
+        edituser["index"]=index
+        props.update_todo(edituser)
+    }
+
+
+action :
+
+const updateTodo = (data)=>{
+    return((dispatch)=>{
+        dispatch({
+            type:"update_todo",
+            data:data
+        })
+    })
+
+}
+
+reducer:
+
+ case "update_todo":
+          console.log(action)
+          var updatetodo=[]
+          for(var i=0;i<state.todos.length;i++){
+            if(action.data["index"]==i){
+             updatetodo.push(action.data)
+            }
+            else{
+              updatetodo.push(state.todos[i])
+            }
+
+          }
+         
+          //set local storage
+          localStorage.setItem("todos",  JSON.stringify(updatetodo))
+
+          return {
+            ...state,
+            todos:updatetodo
+          }
+
+
+
+map dispatchtoprops:
+
+ update_todo:(data)=>dispatch(updateTodo(data))
